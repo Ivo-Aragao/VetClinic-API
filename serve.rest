@@ -1,0 +1,54 @@
+### get admin
+GET http://localhost:3000/tutor
+### get usuarios
+GET http://localhost:3000/pet
+### get admin com id
+GET http://localhost:3000/tutor/1
+### acessando via post
+POST http://localhost:3000/tutor
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Jane Smith",
+  "phone": "987654321",
+  "email": "jane.smith@example.com",
+  "date_of_birth": "1990-05-25 09:15",
+  "zip_code": "12345678",
+  "pets": [
+    {
+      "id": 1,
+      "name": "Fluffy",
+      "species": "cat",
+      "carry": "p",
+      "weight": 4,
+      "date_of_birth": "2015-10-02 11:30"
+    }
+  ]
+}
+
+### acessando via patch
+PATCH  http://localhost:3000/tutor/3
+### acessando via post
+PUT  http://localhost:3000/tutor/1
+{
+  "id": 1,
+  "name": "Jonh Doe",
+  "phone": "85989323895",
+  "email": "jose.abreu@compasso.com",
+  "date_of_birth": "1993-12-12 10:10",
+  "zip_code": "61760000",
+  "pets": [
+    {
+      "id": 1,
+      "name": "Lilo",
+      "species": "dog",
+      "carry": "p",
+      "weight": 5,
+      "date_of_birth": "1993-12-12 10:10"
+    }
+  ]
+}
+
+### acessando via post
+DELETE http://localhost:3000/tutor/3
