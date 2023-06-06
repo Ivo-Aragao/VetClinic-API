@@ -13,7 +13,19 @@ router.get('/', (req, res) => {
 
   res.send('Acessando informações dos pets:\n' + JSON.stringify(pets, null, 2));
 });
+router.get('/:petId', (req, res) => {
+  const petId = parseInt(req.params.petId);
 
+  for (const user of users) {
+    const pet = user.pets.find(pet => pet.id === petId);
+    if (pet) {
+      res.send('Acessando informações do pet com o ID: ' + petId + ':\n' + JSON.stringify(pet, null, 2));
+      return;
+    }
+  }
+
+  res.status(404).send('Pet não encontrado');
+});
 
 router.post('/:tutorId', (req, res) => {
   const tutorId = parseInt(req.params.tutorId);
@@ -63,6 +75,40 @@ router.put('/:petId/tutor/:tutorId', (req, res) => {
   res.send('Informações do pet atualizadas:\n' + JSON.stringify(pet, null, 2));
 });
 
+router.patch('/:petId/tutor/:userId', (req, res) => {
+  const petId = parseInt(req.params.petId);
+  const userId = parseInt(req.params.userId);
+
+  const user = users.find(user => user.id === userId);
+  if (!user) {
+    res.status(404).send('Tutor não encontrado');
+    return;
+  }
+
+  const pet = user.pets.find(pet => pet.id === petId);
+  if (!pet) {
+    res.status(404).send('Pet não encontrado');
+    return;
+  }
+
+  if (req.body.name) {
+    pet.name = req.body.name;
+  }
+  if (req.body.species) {
+    pet.species = req.body.species;
+  }
+  if (req.body.carry) {
+    pet.carry = req.body.carry;
+  }
+  if (req.body.weight) {
+    pet.weight = req.body.weight;
+  }
+  if (req.body.date_of_birth) {
+    pet.date_of_birth = req.body.date_of_birth;
+  }
+
+  res.send('Informações do pet atualizadas:\n' + JSON.stringify(pet, null, 2));
+});
 router.delete('/:petId/tutor/:tutorId', (req, res) => {
   const petId = parseInt(req.params.petId);
   const tutorId = parseInt(req.params.tutorId);
@@ -85,3 +131,4 @@ router.delete('/:petId/tutor/:tutorId', (req, res) => {
 });
 
 module.exports = router;
+
