@@ -66,12 +66,24 @@ router.patch('/:id', (req, res) => {
   const user = users.find(user => user.id === userId);
 
   if (user) {
-    user.name = req.body.name;
-    user.phone = req.body.phone;
-    user.email= req.body.email,
-    user.date_of_birth= req.body.date_of_birth,
-    user.zip_code= req.body.zip_code,
-    user.pets= req.body.pets || []
+    if (req.body.name) {
+      user.name = req.body.name;
+    }
+    if (req.body.phone) {
+      user.phone = req.body.phone;
+    }
+    if (req.body.email) {
+      user.email = req.body.email;
+    }
+    if (req.body.date_of_birth) {
+      user.date_of_birth = req.body.date_of_birth;
+    }
+    if (req.body.zip_code){
+      user.zip_code = req.body.zip_code;
+    }
+    if (req.body.pets){
+      user.pets = req.body.pets || [];
+    }
 
     res.send('Usuário atualizado com sucesso');
   } else {
