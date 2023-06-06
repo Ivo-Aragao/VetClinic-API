@@ -9,17 +9,17 @@ POST http://localhost:3000/tutor
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "Jane Smith",
+  "id": 2,
+  "name": "ivo",
   "phone": "987654321",
-  "email": "jane.smith@example.com",
+  "email": "ivoaragao@example.com",
   "date_of_birth": "1990-05-25 09:15",
-  "zip_code": "12345678",
+  "zip_code": "123577",
   "pets": [
     {
       "id": 1,
-      "name": "Fluffy",
-      "species": "cat",
+      "name": "mucilom",
+      "species": "dog",
       "carry": "p",
       "weight": 4,
       "date_of_birth": "2015-10-02 11:30"
