@@ -1,15 +1,21 @@
-### get admin
+### get tutor
 GET http://localhost:3000/tutor
-### get usuarios
+
+### get pet
 GET http://localhost:3000/pet
-### get admin com id
-GET http://localhost:3000/tutor/1
-### acessando via post
+
+### get tutor com id
+GET http://localhost:3000/tutor/2
+
+### get pet com id
+GET http://localhost:3000/pet/1
+
+### adicionando via post
 POST http://localhost:3000/tutor
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": 3,
   "name": "ivo",
   "phone": "987654321",
   "email": "ivoaragao@example.com",
@@ -17,7 +23,7 @@ Content-Type: application/json
   "zip_code": "123577",
   "pets": [
     {
-      "id": 1,
+      "id": 3,
       "name": "mucilom",
       "species": "dog",
       "carry": "p",
@@ -27,7 +33,7 @@ Content-Type: application/json
   ]
 }
 
-### acessando via patch
+### alterando dados tutor via patch
 PATCH  http://localhost:3000/tutor/1
 Content-Type: application/json
 
@@ -36,8 +42,18 @@ Content-Type: application/json
           "phone":985185188
           
         }
-### acessando via post
-PUT  http://localhost:3000/tutor/1
 
-### acessando via post
+### alterando dados pet via patch
+PATCH http://localhost:3000/pet/1/tutor/1
+Content-Type: application/json
+
+  {
+  "name": "stich",
+  "species": "lobo",
+  "carry": "g",
+  "weight": 10,
+  "date_of_birth": "01/01/2013"
+}    
+
+### deletando dados via id
 DELETE http://localhost:3000/tutor/1
