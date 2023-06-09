@@ -27,7 +27,7 @@ router.get('/:petId', (req, res) => {
   res.status(404).send('Pet não encontrado');
 });
 
-router.post('/:tutorId', (req, res) => {
+router.post('/tutor/:tutorId', (req, res) => {
   const tutorId = parseInt(req.params.tutorId);
   const tutor = users.find(user => user.id === tutorId);
 
